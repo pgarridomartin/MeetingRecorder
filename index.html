@@ -1,0 +1,133 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Recorder & Summarizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "openai": "https://cdn.jsdelivr.net/npm/openai/+esm"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Meeting Recorder & Summarizer</h1>
+        </header>
+
+        <main>
+            <div class="settings-container">
+                <div id="settingsHeader" class="settings-header">
+                    <h2>Settings</h2>
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M7 10l5 5 5-5z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div id="settingsContent" class="settings-content">
+                    <div class="form-group">
+                        <label for="apiKey">OpenAI API Key:</label>
+                        <input type="password" id="apiKey" placeholder="Your OpenAI API Key">
+                    </div>
+                    <div class="form-group">
+                        <label for="emailAddress">Email Address for Sending:</label>
+                        <input type="email" id="emailAddress" placeholder="Email address for sending summaries">
+                    </div>
+                    <div class="form-group">
+                        <label for="emailPassword">Email Password:</label>
+                        <input type="password" id="emailPassword" placeholder="Email password">
+                    </div>
+                    <div class="form-group">
+                        <label for="defaultEmail">Default Recipient Email:</label>
+                        <input type="email" id="defaultEmail" placeholder="Your default email address">
+                    </div>
+                    <button id="saveSettingsButton" class="save-settings-btn">Save Settings</button>
+                </div>
+            </div>
+
+            <div class="recorder-container">
+                <div class="recorder-status">
+                    <div id="statusIndicator"></div>
+                    <span id="recordingStatus">Ready to record</span>
+                    <div id="recordingTime">00:00:00</div>
+                </div>
+                
+                <div class="recorder-controls">
+                    <button id="recordButton" class="control-btn">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <circle cx="12" cy="12" r="8" fill="currentColor"/>
+                        </svg>
+                        <span>Record</span>
+                    </button>
+                    <button id="pauseButton" class="control-btn" disabled>
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <rect x="6" y="6" width="4" height="12" fill="currentColor"/>
+                            <rect x="14" y="6" width="4" height="12" fill="currentColor"/>
+                        </svg>
+                        <span>Pause</span>
+                    </button>
+                    <button id="stopButton" class="control-btn" disabled>
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <rect x="6" y="6" width="12" height="12" fill="currentColor"/>
+                        </svg>
+                        <span>Stop</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="transcription-container hidden" id="transcriptionContainer">
+                <h2>Processing Meeting Recording</h2>
+                <div class="processing-indicator">
+                    <div class="spinner"></div>
+                    <p id="processingStatus">Transcribing audio...</p>
+                </div>
+            </div>
+
+            <div class="results-container hidden" id="resultsContainer">
+                <h2>Meeting Summary</h2>
+                <div class="summary-section">
+                    <h3>Key Points</h3>
+                    <div id="keySummary" class="summary-content"></div>
+                </div>
+                
+                <div class="summary-section">
+                    <h3>Action Items</h3>
+                    <div id="actionItems" class="summary-content"></div>
+                </div>
+                
+                <div class="summary-section">
+                    <h3>Insights & Suggestions</h3>
+                    <div id="insights" class="summary-content"></div>
+                </div>
+                
+                <div class="email-form">
+                    <h3>Send Summary via Email</h3>
+                    <form id="emailForm">
+                        <div class="form-group">
+                            <label for="emailTo">Recipient Email:</label>
+                            <input type="email" id="emailTo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailSubject">Subject:</label>
+                            <input type="text" id="emailSubject" 
+                                   value="Meeting Summary and Action Items">
+                        </div>
+                        <button type="submit" class="submit-btn">Send Summary</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Note: This app uses your device's microphone to record meetings. For native installation, add to home screen.</p>
+        </footer>
+    </div>
+
+    <div id="notification" class="notification hidden"></div>
+
+    <script src="config.js" type="module"></script>
+    <script src="app.js" type="module"></script>
+</body>
+</html>

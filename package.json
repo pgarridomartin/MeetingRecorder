@@ -1,0 +1,36 @@
+{
+  "name": "meeting-recorder-summarizer",
+  "version": "1.0.0",
+  "description": "A mobile-friendly web app that records meetings, transcribes audio, and generates summaries using AI",
+  "main": "app.js",
+  "scripts": {
+    "start": "serve public",
+    "dev": "serve public"
+  },
+  "keywords": [
+    "meeting",
+    "recorder",
+    "transcription",
+    "OpenAI",
+    "whisper",
+    "summarization"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "serve": "^14.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.54.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

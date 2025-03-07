@@ -1,0 +1,13 @@
+meeting-summarizer/
+│
+├── public/
+│   ├── index.html
+│   ├── styles.css
+│   ├── js/
+│   │   ├── app.js
+│   │   └── config.js
+│
+├── .env
+├── README.md
+└── .gitignore
+
