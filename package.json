@@ -21,6 +21,7 @@
   "dependencies": {
     "@capacitor/cli": "^6.2.0",
     "@capacitor/core": "^7.0.1",
+    "@capacitor/ios": "^7.0.1",
     "dotenv": "^16.3.1",
     "emailjs-com": "^3.2.0",
     "serve": "^14.2.1"
